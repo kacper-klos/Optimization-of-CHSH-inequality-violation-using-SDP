@@ -1,0 +1,13 @@
+[project]
+name = "optimization-of-chsh-inequality-violation-using-sdp"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy (>=2.3.2,<3.0.0)",
+    "cvxpy (>=1.7.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
