@@ -17,13 +17,13 @@ $$
 where $A_1$ and $A_2$ are one party’s measurement settings, and $B_1$ and $B_2$ are the other’s. The task is to maximize
 
 $$
-\operatorname{tr}(C \rho)
+\text{tr}(C \rho)
 $$
 
 where $\rho$ is the [density matrix](https://en.wikipedia.org/wiki/Density_matrix)[^6][^7] of the quantum state. The probabilities must sum to 1, giving the constraint
 
 $$
-\operatorname{tr}(\rho) = 1
+\text{tr}(\rho) = 1
 $$
 
 The optimization code is in `perfect_detectors/state_optimization.py`, where the chosen measurement bases are well known for violating the CHSH inequality[^8].
