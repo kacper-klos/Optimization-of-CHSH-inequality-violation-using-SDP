@@ -3,7 +3,6 @@ import numpy.typing as npt
 import cvxpy as cp
 from typing import Tuple
 
-from const import X, Y, Z
 
 def chsh_state_optimization(A1: npt.NDArray[np.complex128], 
                             A2: npt.NDArray[np.complex128], 
@@ -38,16 +37,3 @@ def chsh_state_optimization(A1: npt.NDArray[np.complex128],
 
     return problem.value, rho.value
 
-# Example
-
-# Solution for measurement which can obtain maximal violation
-result_value, result_rho = chsh_state_optimization(Z, X, (Z + X) / np.sqrt(2), (Z - X) / np.sqrt(2))
-
-# Optimal CHSH value
-print(f"Max CHSH value: {result_value}")
-
-# Optimal state
-threshold = 1e-8
-rho_pretty = result_rho.copy()
-rho_pretty[np.abs(rho_pretty) < threshold] = 0
-print(f"With qubit state:\n{rho_pretty}")
