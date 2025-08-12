@@ -2,7 +2,7 @@ import numpy as np
 
 import state_optimization as so
 import measurement_optimization as mo
-from const import X, Y, Z, CHSH_MAX
+from const import X, Y, Z, CHSH_MAX, THRESHOLD
 
 def state_optimization_test():
 
@@ -12,9 +12,8 @@ def state_optimization_test():
     print(f"Max CHSH value: {result_value}, expected: {CHSH_MAX}, difference: {np.abs(result_value - CHSH_MAX)}")
 
     # Optimal state
-    threshold = 1e-8
     rho_pretty = result_rho.copy()
-    rho_pretty[np.abs(rho_pretty) < threshold] = 0
+    rho_pretty[np.abs(rho_pretty) < THRESHOLD] = 0
     print(f"With qubit state:\n{rho_pretty}\n")
 
 def measurment_optimization_test():

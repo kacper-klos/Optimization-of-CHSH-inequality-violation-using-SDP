@@ -26,7 +26,7 @@ $$
 \text{tr}(\rho) = 1
 $$
 
-The optimization code is in `perfect_detectors/state_optimization.py`, where the chosen measurement bases are well known for violating the CHSH inequality[^8].
+The optimization code is in `src/state_optimization.py`, where the chosen measurement bases are well known for violating the CHSH inequality[^8].
 
 ---
 
