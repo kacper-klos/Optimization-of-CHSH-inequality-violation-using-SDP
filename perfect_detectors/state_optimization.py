@@ -1,8 +1,9 @@
 import numpy as np
 import numpy.typing as npt
 import cvxpy as cp
-
 from typing import Tuple
+
+from const import X, Y, Z
 
 def chsh_state_optimization(A1: npt.NDArray[np.complex128], 
                             A2: npt.NDArray[np.complex128], 
@@ -38,12 +39,6 @@ def chsh_state_optimization(A1: npt.NDArray[np.complex128],
     return problem.value, rho.value
 
 # Example
-
-# Pauli matrices
-I = np.eye(2, dtype=np.complex128)
-X = np.array([[0, 1], [1, 0]], dtype=np.complex128)
-Y = np.array([[0, -1j], [1j, 0]], dtype=np.complex128)
-Z = np.array([[1, 0], [0, -1]], dtype=np.complex128)
 
 # Solution for measurement which can obtain maximal violation
 result_value, result_rho = chsh_state_optimization(Z, X, (Z + X) / np.sqrt(2), (Z - X) / np.sqrt(2))
