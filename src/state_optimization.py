@@ -1,24 +1,29 @@
 import numpy as np
-import numpy.typing as npt
 import cvxpy as cp
 from typing import Tuple
 
+def chsh_state_optimization(A1: np.ndarray, 
+                            A2: np.ndarray, 
+                            B1: np.ndarray, 
+                            B2: np.ndarray,
+                            mu: float = 1.0,
+                            error_state: np.ndarray = np.zeros((4,4))) -> Tuple[np.float64, np.ndarray]:
 
-def chsh_state_optimization(A1: npt.NDArray[np.complex128], 
-                            A2: npt.NDArray[np.complex128], 
-                            B1: npt.NDArray[np.complex128], 
-                            B2: npt.NDArray[np.complex128]) -> Tuple[np.float64, npt.NDArray[np.complex128]]:
     # Assert proper input sizes
     assert(A1.shape == (2, 2))
     assert(A2.shape == (2, 2))
     assert(B1.shape == (2, 2))
     assert(B2.shape == (2, 2))
+    assert(error_state.shape == (4, 4))
+    # Assert proper fraction
+    assert(mu >= 0 and mu <= 1)
 
     # CHSH operator
     CHSH = np.kron(A1, B1 + B2) + np.kron(A2, B1 - B2)
 
     # 2 qubit density matrix
     rho = cp.Variable((4, 4), complex=True, hermitian=True)
+    rho_effective = mu * rho + (1 - mu) * error_state
 
     # Optimization constraints
     constrains = [
@@ -29,7 +34,7 @@ def chsh_state_optimization(A1: npt.NDArray[np.complex128],
     ]
 
     # Objective function
-    objective = cp.Maximize(cp.real(cp.trace(CHSH @ rho)))
+    objective = cp.Maximize(cp.real(cp.trace(CHSH @ rho_effective)))
 
     # Solver
     problem = cp.Problem(objective, constrains)
