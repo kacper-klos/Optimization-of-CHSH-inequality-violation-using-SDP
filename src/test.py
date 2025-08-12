@@ -4,6 +4,11 @@ import state_optimization as so
 import measurement_optimization as mo
 from const import X, Y, Z, CHSH_MAX, THRESHOLD
 
+def random_measurement():
+    v = np.random.normal(size = 3)
+    v /= np.linalg.norm(v)
+    return X*v[0] + Y *v[1] + Z * v[2]
+
 def state_optimization_test():
 
     # Solution for measurement which can obtain maximal violation
@@ -39,14 +44,16 @@ def measurment_optimization_test():
     print(f"B2 optimized result\n{B2_opt},\nexpected:\n{B2}\n")
 
 def iterative_optimization_test():
-    A1 = Y
-    A2 = Z
-    B1 = (Y + Z) / np.sqrt(2)
-    B2 = (X - Y) / np.sqrt(2)
+    A1 = random_measurement()
+    A2 = random_measurement()
+    B1 = random_measurement()
+    B2 = random_measurement()
     result = 0
 
-    for _ in range(100):
+    for i in range(100):
         result, rho = so.chsh_state_optimization(A1, A2, B1, B2)
+        if i % 10 == 0:
+            print(result)
         A1 = mo.chsh_A1_optimize(B1, B2, rho)
         A2 = mo.chsh_A2_optimize(B1, B2, rho)
         result, rho = so.chsh_state_optimization(A1, A2, B1, B2)
