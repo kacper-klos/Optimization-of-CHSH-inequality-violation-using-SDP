@@ -33,21 +33,21 @@ The optimization code is in `src/state_optimization.py`, where the chosen measur
 We cannot optimize the measurement and the state at the same time, because the problem is not convex. However, we can iteratively optimize one and then the other. If we rewrite the CHSH expression:
 
 $$
-\mathrm{CHSH} = \operatorname{tr}\!\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \operatorname{tr}(A_1 K_{A_1}),
+\mathrm{CHSH} = \text{tr}\!\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \text{tr}(A_1 K_{A_1}),
 $$
 
 where
 
 $$
-K_{A_1} = \operatorname{tr}_B \!\left[ \left( I_A \otimes (B_1 + B_2) \right) \rho \right],
+K_{A_1} = \text{tr}_B \!\left[ \left( I_A \otimes (B_1 + B_2) \right) \rho \right],
 $$
 
-optimizing $\operatorname{tr}(A_1 K_{A_1})$ is a convex problem.  
+optimizing $\text{tr}(A_1 K_{A_1})$ is a convex problem.  
 Moreover, with the constraints that $A$ is Hermitian and has eigenvalues in the range $[-1, 1]$, the problem has a closed-form solution.  
 This can be seen using the [von Neumann trace inequality](https://en.wikipedia.org/wiki/Trace_inequality)[^9]:
 
 $$
-\operatorname{tr}(A K) = \operatorname{tr}(A U \Lambda U^{\dagger}) = \operatorname{tr}(U^{\dagger} A U \, \Lambda) = \operatorname{tr}(\tilde{A} \Lambda) \leq \sum_i \sigma_i(\tilde{A}) \, \sigma_i(\Lambda),
+\text{tr}(A K) = \text{tr}(A U \Lambda U^{\dagger}) = \text{tr}(U^{\dagger} A U \, \Lambda) = \text{tr}(\tilde{A} \Lambda) \leq \sum_i \sigma_i(\tilde{A}) \, \sigma_i(\Lambda),
 $$
 
 where $K = U \Lambda U^{\dagger}$ is the spectral decomposition, and $\sigma_i(\cdot)$ denotes singular values.
