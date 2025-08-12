@@ -28,6 +28,38 @@ $$
 
 The optimization code is in `src/state_optimization.py`, where the chosen measurement bases are well known for violating the CHSH inequality[^8].
 
+### Optimizing the Measurement
+
+We cannot optimize the measurement and the state at the same time, because the problem is not convex. However, we can iteratively optimize one and then the other. If we rewrite the CHSH expression:
+
+$$
+\mathrm{CHSH} = \operatorname{tr}\!\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \operatorname{tr}(A_1 K_{A_1}),
+$$
+
+where
+
+$$
+K_{A_1} = \operatorname{tr}_B \!\left[ \left( I_A \otimes (B_1 + B_2) \right) \rho \right],
+$$
+
+optimizing $\operatorname{tr}(A_1 K_{A_1})$ is a convex problem.  
+Moreover, with the constraints that $A$ is Hermitian and has eigenvalues in the range $[-1, 1]$, the problem has a closed-form solution.  
+This can be seen using the [von Neumann trace inequality](https://en.wikipedia.org/wiki/Trace_inequality)[^9]:
+
+$$
+\operatorname{tr}(A K) = \operatorname{tr}(A U \Lambda U^{\dagger}) = \operatorname{tr}(U^{\dagger} A U \, \Lambda) = \operatorname{tr}(\tilde{A} \Lambda) \leq \sum_i \sigma_i(\tilde{A}) \, \sigma_i(\Lambda),
+$$
+
+where $K = U \Lambda U^{\dagger}$ is the spectral decomposition, and $\sigma_i(\cdot)$ denotes singular values.
+
+From this, we see that the optimal choice is
+
+$$
+A^{*} = U \, \mathrm{sgn}(K) \, U^{\dagger},
+$$
+
+which yields the largest CHSH violation.
+
 ---
 
 # References
@@ -38,4 +70,5 @@ The optimization code is in `src/state_optimization.py`, where the chosen measur
 [^5]: https://qubit.guide/6.3-chsh-inequality  
 [^6]: https://en.wikipedia.org/wiki/Density_matrix  
 [^7]: Caltech Ph219/CS219 Quantum Computation, https://www.preskill.caltech.edu/ph219/ph219_2021-22.html  
-[^8]: https://en.wikipedia.org/wiki/Bell%27s_theorem
+[^8]: https://en.wikipedia.org/wiki/Bell%27s_theorem  
+[^9]: https://en.wikipedia.org/wiki/Trace_inequality

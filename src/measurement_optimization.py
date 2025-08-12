@@ -23,7 +23,7 @@ def optimize_trace_product(K: np.ndarray) -> np.ndarray:
 
     eigenvalues, U = np.linalg.eigh(K)
     A_diag = np.diag(np.sign(eigenvalues))
-    return U.conj().T @ A_diag @ U
+    return U @ A_diag @ U.conj().T
 
 def first_subspace_K(Bs: np.ndarray, rho: np.ndarray) -> np.ndarray:
     # Assert proper input shape
