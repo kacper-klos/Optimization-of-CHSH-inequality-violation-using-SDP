@@ -47,7 +47,7 @@ Moreover, with the constraints that $A$ is Hermitian and has eigenvalues in the 
 This can be seen using the [von Neumann trace inequality](https://en.wikipedia.org/wiki/Trace_inequality)[^9]:
 
 $$
-\text{tr}(A K) = \text{tr}(A U \Lambda U^{\dagger}) = \text{tr}(U^{\dagger} A U \: \Lambda) = \text{tr}(\tilde{A} \Lambda) \leq \sum_i \sigma_i(\tilde{A}) \: \sigma_i(\Lambda),
+\text{tr}(A K) = \text{tr}(A U \Lambda U^{\dagger}) = \text{tr}(U^{\dagger} A U  \Lambda) = \text{tr}(\tilde{A} \Lambda) \leq \sum_i \sigma_i(\tilde{A})  \sigma_i(\Lambda),
 $$
 
 where $K = U \Lambda U^{\dagger}$ is the spectral decomposition, and $\sigma_i(\cdot)$ denotes singular values.
@@ -55,7 +55,7 @@ where $K = U \Lambda U^{\dagger}$ is the spectral decomposition, and $\sigma_i(\
 From this, we see that the optimal choice is
 
 $$
-A^{*} = U \: \mathrm{sgn}(K) \: U^{\dagger},
+A^{*} = U  \mathrm{sgn}(K)  U^{\dagger},
 $$
 
 which yields the largest CHSH violation.
