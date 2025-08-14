@@ -141,6 +141,8 @@ $$
 K_{B_2} = \text{tr}_A \left[ \left( (A_1 - A_2) \otimes I_B \right) \rho \right],
 $$
 
+this allow to maximize all measurement settings.
+
 ---
 
 # References
