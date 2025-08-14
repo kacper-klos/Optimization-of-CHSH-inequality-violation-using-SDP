@@ -26,7 +26,18 @@ $$
 \end{bmatrix}
 $$
 
-And the measurement
+Error state:
+
+$$
+\rho_{\text{err}} = begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+end{bmatrix}
+$$
+
+And the measurement:
 
 $$
 A_1 = \begin{bmatrix}
@@ -82,16 +93,16 @@ $$
 where $A_1$ and $A_2$ are one party’s measurement settings, and $B_1$ and $B_2$ are the other’s. The task is to maximize 
 
 $$
-\text{tr}(C \rho_{mathrm{eff}}),
+\text{tr}(C \rho_{text{eff}}),
 $$
 
-If we separate $\rho_{mathrm{eff}}$ into the perturbation $\rho_{err}$ and state we do have control $\rho$ the problem still remain convex.
+If we separate $\rho_{text{eff}}$ into the perturbation $\rho_{err}$ and state we do have control $\rho$ the problem still remain convex.
 
 $$
-\rho_{mathrm{eff}} = \mu \rho + (1 - \mu) \rho_{err}
+\rho_{text{eff}} = \mu \rho + (1 - \mu) \rho_{err}
 $$
 
-where each $\rho$, $\rho_{err}$ and $\rho_{mathrm{eff}}$ is the [density matrix](https://en.wikipedia.org/wiki/Density_matrix)[^6][^7] of the quantum state. The probabilities must sum to 1, giving the SDP constraint
+where each $\rho$, $\rho_{err}$ and $\rho_{text{eff}}$ is the [density matrix](https://en.wikipedia.org/wiki/Density_matrix)[^6][^7] of the quantum state. The probabilities must sum to 1, giving the SDP constraint
 
 $$
 \text{tr}(\rho) = 1,
@@ -103,7 +114,7 @@ $$
 If we rewrite the CHSH expression:
 
 $$
-\mathrm{CHSH} = \text{tr}\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \text{tr}(A_1 K_{A_1}),
+\text{CHSH} = \text{tr}\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \text{tr}(A_1 K_{A_1}),
 $$
 
 where
@@ -125,7 +136,7 @@ where $K = U \Lambda U^{\dagger}$ is the spectral decomposition, and $\sigma_i(\
 From this, we see that the optimal choice is
 
 $$
-A^{*} = U  \mathrm{sgn}(K)  U^{\dagger},
+A^{*} = U  \text{sgn}(K)  U^{\dagger},
 $$
 
 which yields the largest CHSH violation.  
