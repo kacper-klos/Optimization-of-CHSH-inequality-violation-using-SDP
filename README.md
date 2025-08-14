@@ -134,9 +134,11 @@ To optimize other setting we use different $K$:
 $$
 K_{A_2} = \text{tr}_B \left[ \left( I_A \otimes (B_1 - B_2) \right) \rho \right],
 $$
+
 $$
 K_{B_1} = \text{tr}_A \left[ \left( (A_1 + A_2) \otimes I_B \right) \rho \right],
 $$
+
 $$
 K_{B_2} = \text{tr}_A \left[ \left( (A_1 - A_2) \otimes I_B \right) \rho \right],
 $$
