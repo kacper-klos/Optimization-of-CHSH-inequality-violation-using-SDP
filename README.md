@@ -29,12 +29,12 @@ $$
 Error state:
 
 $$
-\rho_{\text{err}} = begin{bmatrix}
+\rho_{\text{err}} = \begin{bmatrix}
 1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0
-end{bmatrix}
+\end{bmatrix}
 $$
 
 And the measurement:
