@@ -103,13 +103,13 @@ $$
 If we rewrite the CHSH expression:
 
 $$
-\mathrm{CHSH} = \text{tr}\!\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \text{tr}(A_1 K_{A_1}),
+\mathrm{CHSH} = \text{tr}\left[ \left( A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2 \right) \rho \right] = \text{tr}(A_1 K_{A_1}),
 $$
 
 where
 
 $$
-K_{A_1} = \text{tr}_B \!\left[ \left( I_A \otimes (B_1 + B_2) \right) \rho \right],
+K_{A_1} = \text{tr}_B \left[ \left( I_A \otimes (B_1 + B_2) \right) \rho \right],
 $$
 
 optimizing $\text{tr}(A_1 K_{A_1})$ is a convex problem.  
