@@ -56,19 +56,28 @@ def minimal_mu():
     violation_best = 0
 
     # Range in which the minimum detector accuracy will be looked
-    for i in range(43, 40, -1):
-        mu = i/100
+    for i in range(1000, 700, -1):
+        found = False
+        j = 0
+        mu = i/1000
         max_violation = 0
         # Inital conditions repetition
-        for _ in range(5000):
+        while not found and j < 1000:
             max_violation, rho, measurement_setting = iterative_optimization(mu)
+
             if max_violation > LOCAL_MAX:
                 # Record found value and move to the next mu
                 violation_best = max_violation
                 mu_best = mu
                 measurement_setting_best = measurement_setting
                 rho_best = rho
-                break
+                found = True
+                print(f"Found for error rate: {mu}")
+
+            j += 1
+        # Stop looking if cound not found the last solution
+        if not found:
+            break
 
     print(f"Low bound on detector accurancy: {mu_best}")
     print(f"Resulting in violation: {violation_best}")

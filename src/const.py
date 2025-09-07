@@ -15,7 +15,7 @@ THRESHOLD = 1e-8
 
 # Detector error state
 ZERO_KET = np.array([1, 0])
-ERROR_STATE = np.outer(np.kron(ZERO_KET, ZERO_KET), np.kron(ZERO_KET, ZERO_KET))
+ERROR_STATE = np.identity(4) / 4
 
 def random_measurement() -> np.ndarray:
     """ Returns random matrix which is valid measurement setting.
