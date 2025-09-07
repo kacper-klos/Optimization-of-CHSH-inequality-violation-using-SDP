@@ -30,7 +30,7 @@ $$
 Error state:
 
 $$
-\rho_{\text{err}} = \frac{\mathbb{1}_4}{4}
+\rho_{\text{err}} = \frac{I_4}{4}
 $$
 
 And the measurement:
